@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+        content="HISR: Hybrid Implicit Surface Representation for Photorealistic 3D Human Reconstruction">
   <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Nerfies: Deformable Neural Radiance Fields</title>
@@ -88,32 +88,32 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Nerfies: Deformable Neural Radiance Fields</h1>
+          <h1 class="title is-1 publication-title">HISR: Hybrid Implicit Surface Representation for Photorealistic 3D Human Reconstruction</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://keunhong.com">Keunhong Park</a><sup>1</sup>,</span>
+              <a href="https://github.com/Angtian/">Angtian Wang</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="https://utkarshsinha.com">Utkarsh Sinha</a><sup>2</sup>,</span>
+              <a href="https://web.cs.ucla.edu/~yuanluxu/">Yuanlu Xu</a><sup>2</sup>,</span>
             <span class="author-block">
-              <a href="https://jonbarron.info">Jonathan T. Barron</a><sup>2</sup>,
+              <a href="https://nsarafianos.github.io/">Nikolaos Sarafianos</a><sup>2</sup>,
             </span>
             <span class="author-block">
-              <a href="http://sofienbouaziz.com">Sofien Bouaziz</a><sup>2</sup>,
+              <a href="https://www.rmaier.net/">Robert Maier</a><sup>2</sup>,
             </span>
             <span class="author-block">
-              <a href="https://www.danbgoldman.com">Dan B Goldman</a><sup>2</sup>,
+              <a href="https://morpheo.inrialpes.fr/people/Boyer/">Edmond Boyer</a><sup>2</sup>,
             </span>
             <span class="author-block">
-              <a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a><sup>1,2</sup>,
+              <a href="https://www.cs.jhu.edu/~ayuille/">Alan Yuille</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a><sup>2</sup>
+              <a href="https://www.linkedin.com/in/tungtony/">Tony Tung</a><sup>2</sup>
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of Washington,</span>
-            <span class="author-block"><sup>2</sup>Google Research</span>
+            <span class="author-block"><sup>1</sup>Johns Hopkins University,</span>
+            <span class="author-block"><sup>2</sup>Meta Reality Labs Research</span>
           </div>
 
           <div class="column has-text-centered">
@@ -129,7 +129,7 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
+                <a href="https://arxiv.org/pdf/2312.17192.pdf"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -258,31 +258,29 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We present the first method capable of photorealistically reconstructing a non-rigidly
-            deforming scene using photos/videos captured casually from mobile phones.
+            Neural reconstruction and rendering strategies have demonstrated state-of-the-art performances due, 
+            in part, to their ability to preserve high level shape details. Existing approaches, however, 
+            either represent objects as implicit surface functions or neural volumes and still struggle to recover 
+            shapes with heterogeneous materials, in particular human skin, hair or clothes. To this aim, we present 
+            a new hybrid implicit surface representation to model human shapes. This representation is composed of 
+            two surface layers that represent opaque and translucent regions on the clothed human body. We segment 
+            different regions automatically using visual cues and learn to reconstruct two signed distance functions (SDFs). 
+            We perform surface-based rendering on opaque regions (e.g.,body, face, clothes) to preserve high-fidelity surface 
+            normals and volume rendering on translucent regions (e.g.,hair). Experiments demonstrate that our approach obtains 
+            state-of-the-art results on 3D human reconstructions, and also shows competitive performances on other objects. 
+            Our Contribution includes:
           </p>
           <p>
-            Our approach augments neural radiance fields
-            (NeRF) by optimizing an
-            additional continuous volumetric deformation field that warps each observed point into a
-            canonical 5D NeRF.
-            We observe that these NeRF-like deformation fields are prone to local minima, and
-            propose a coarse-to-fine optimization method for coordinate-based models that allows for
-            more robust optimization.
-            By adapting principles from geometry processing and physical simulation to NeRF-like
-            models, we propose an elastic regularization of the deformation field that further
-            improves robustness.
+            A study of state-of-the-art 3D reconstruction approaches for 3D humans, which shows \emph{existing approaches cannot obtain both smooth surface reconstruction and high-fidelity geometry details simultaneously}.
           </p>
           <p>
-            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
-            photos/videos into deformable NeRF
-            models that allow for photorealistic renderings of the subject from arbitrary
-            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
-            using a
-            rig with two mobile phones that take time-synchronized photos, yielding train/validation
-            images of the same pose at different viewpoints. We show that our method faithfully
-            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
-            fidelity.
+            A new hybrid representation, which is surface-based while enabling volume rendering for fine-grained geometry.
+          </p>
+          <p>
+            A computed expectation of SDF values within a conical frustum when computing the volume densities by considering the viewing rays as cones, which significantly improves the reconstructed geometry.
+          </p>
+          <p>
+            A new loss to regularize the specularity changes upon viewing directions.
           </p>
         </div>
       </div>
